@@ -7,6 +7,17 @@ const urlEmployees = "http://localhost:3000/employees",
 fetchData(urlEmployees, empregados);
 fetchData(urlRoles, cargos);
 
+
+let checarDadosCarregados = setInterval(() => {
+      if (cargos[0] != undefined) {
+            clearInterval(checarDadosCarregados);
+            document.querySelector('.preloader').classList.add('display-none');
+            montaTabela(empregados, cargos, '.tbody');
+            montaCargos();
+      }
+}, 50);
+
+
 function fetchData(url, array) {
       fetch(url).then(data => {return data.json()}).then(data => {data.map((dado) => {array.push(dado)})});
 };
@@ -24,6 +35,13 @@ function montaTabela(empregados, cargos) {
       });
 }
 
+function montaCargos() {
+      const filtroHTML = document.querySelector('.checkbox')
+      cargos.forEach((cargo) => {
+            filtroHTML.innerHTML += `<div><label><input type="radio" name="role" class="cargo-label" id="${cargo.id}"> ${cargo.name}</label></div>`;
+      });
+}
+
 function organizaPorSalario(array) {
       return array.sort((a, b) => (b.salary > b.salary) ? 1 : -1);
 }
@@ -32,16 +50,3 @@ function organizaPorNome(array) {
       return array.sort((a, b) => (a.name > b.name) ? 1 : -1);
 }
 
-let checarDadosCarregados = setInterval(() => {
-      if (cargos[0] != undefined) {
-            clearInterval(checarDadosCarregados);
-
-            montaTabela(empregados, cargos, '.tbody');
-            document.querySelector('.preloader').classList.add('display-none');
-      
-            const filtroHTML = document.querySelector('.checkbox')
-            cargos.forEach((cargo) => {
-                  filtroHTML.innerHTML += `<div><label><input type="radio" name="role" class="cargo-label" id="${cargo.id}"> ${cargo.name}</label></div>`;
-            });
-      }
-}, 50);
