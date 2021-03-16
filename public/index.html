@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="style.css">
+      <title>Document</title>
+</head>
+<body>
+      <div class="preloader">
+            <div></div>
+      </div>
+      <div class="filter">
+            <label>
+                  <h3>Organizar: </h3>
+                  <select name="filters" id="filter-categories">
+                        <option value="salarios-asc">Salário ascendente</option>
+                        <option value="salarios-desc">Salário descendente</option>
+                        <option value="nome-asc">Nome ascendente</option>
+                        <option value="nome-desc">Nome descendente</option>
+                  </select>
+            </label>
+            <div class="checkbox">
+                  <h3>Filtrar:</h3>
+            </div>
+      </div>
+      
+
+      <div class="table">
+            <h2>Empregados</h2>
+            <table>
+                  <thead>
+                        <tr>
+                              <td>ID</td>
+                              <td>Nomes</td>
+                              <td>Role</td>
+                              <td>Salary</td>
+                        </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+            </table>
+      </div>
+      <script src="app.js"></script>
+</body>
+</html>
