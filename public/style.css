@@ -101,3 +101,7 @@ thead > tr > td {
 td {
       padding: .5rem 0;
 }
+
+[type="checkbox"] {
+      margin-right: .5rem;
+}
