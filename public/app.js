@@ -15,6 +15,8 @@ let checarDadosCarregados = setInterval(() => {
             document.querySelector('.preloader').classList.add('display-none');
             montaTabela(listaEmpregados, cargos);
             montaCargos();
+            filtraPorCargo();
+            filtraPorOrdem();
       }
 }, 1000);
 
@@ -89,17 +91,20 @@ function limpaFiltros() {
       });
 }
 
-setTimeout(() => {
-      // Seleciona todos os labels
-      const label = document.querySelectorAll('input');
-      // Cria um array de controle das checkboxes clicadas
-      // Inicia um eventListener para cada um dos labels
-      label.forEach((atual) => {
-            atual.addEventListener('change', (event) => {
-                  // Seleciona o id do elemento cliclado
-                  adicionaFiltros(atual);
+function filtraPorCargo() {
+            // Seleciona todos os labels
+            const label = document.querySelectorAll('input');
+            // Cria um array de controle das checkboxes clicadas
+            // Inicia um eventListener para cada um dos labels
+            label.forEach((atual) => {
+                  atual.addEventListener('change', (event) => {
+                        // Seleciona o id do elemento cliclado
+                        adicionaFiltros(atual);
+                  });
             });
-      });
+}
+
+function filtraPorOrdem() {
       const options = document.querySelector('select');
       options.addEventListener('change', function(event) {
             if (this.value=="sem-filtro") {
@@ -125,4 +130,4 @@ setTimeout(() => {
                   limpaFiltros()
             }
       });
-}, 1000);
+}
